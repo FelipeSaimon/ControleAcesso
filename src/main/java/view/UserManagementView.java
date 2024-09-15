@@ -18,6 +18,7 @@ public class UserManagementView extends JFrame {
     private JButton deleteButton;
     private JButton authorizeButton;
     private UserManagementPresenter presenter;
+    private JLabel usernameLabel;
 
     public UserManagementView() {
         User user = new User();
@@ -25,7 +26,9 @@ public class UserManagementView extends JFrame {
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        JLabel usernameLabel = new JLabel("Usuário logado: " + user.getUsername());
+
+        this.usernameLabel = new JLabel("Usuário logado: " + user.getUsername());
+
 
         listModel = new DefaultListModel<>();
         userList = new JList<>(listModel);
@@ -41,7 +44,7 @@ public class UserManagementView extends JFrame {
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(authorizeButton);
-        buttonPanel.add(usernameLabel);
+        buttonPanel.add(this.usernameLabel);
 
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -58,7 +61,7 @@ public class UserManagementView extends JFrame {
     }
 
     public void showUserList(List<User> users) {
-        listModel.clear();
+//        listModel.clear();
         for (User user : users) {
             listModel.addElement(user);
         }
